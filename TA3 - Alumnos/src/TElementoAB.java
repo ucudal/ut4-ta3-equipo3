@@ -1,3 +1,4 @@
+
 public class TElementoAB<T> implements IElementoAB<T> {
 
     private Comparable etiqueta;
@@ -7,7 +8,7 @@ public class TElementoAB<T> implements IElementoAB<T> {
 
     /**
      * @param unaEtiqueta
-     * @param unosDatos 
+     * @param unosDatos
      */
     @SuppressWarnings("unchecked")
     public TElementoAB(Comparable unaEtiqueta, T unosDatos) {
@@ -77,13 +78,54 @@ public class TElementoAB<T> implements IElementoAB<T> {
      */
     @Override
     public String inOrden() {
-          throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String tempStr = "";
+        if (hijoIzq != null) {
+            tempStr = hijoIzq.inOrden();
+        }
+        tempStr = tempStr + etiqueta + " ";
+        if (hijoDer != null) {
+            tempStr = tempStr + hijoDer.inOrden();
+        }
+        return tempStr;
     }
 
-   @Override
+    @Override
     public void inOrden(Lista<T> unaLista) {
-          throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        
+        String tempStr = "";
+        if (hijoIzq != null) {
+            tempStr = hijoIzq.inOrden();
+        }
+        tempStr += etiqueta + " ";
+        if (hijoDer != null) {
+            tempStr += hijoDer.inOrden();
+        }
+    }
+
+    public String postOrden() {
+        String tempStr = "";
+        if (hijoIzq != null) {
+            tempStr = hijoIzq.inOrden();
+        }
+        if (hijoDer != null) {
+            tempStr = tempStr + hijoDer.inOrden();
+        }
+        tempStr = tempStr + etiqueta + " ";
+
+        return tempStr;
+    }
+
+    public String preOrden() {
+        String tempStr = "";
+
+        tempStr = tempStr + etiqueta + " ";
+        if (hijoIzq != null) {
+            tempStr = hijoIzq.inOrden();
+        }
+        if (hijoDer != null) {
+            tempStr = tempStr + hijoDer.inOrden();
+        }
+
+        return tempStr;
     }
 
     @Override
@@ -114,16 +156,25 @@ public class TElementoAB<T> implements IElementoAB<T> {
         this.hijoDer = elemento;
     }
 
-    
-
     @Override
     public int obtenerAltura() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int AltHijoIzq = -1;
+        int AltHijoDer = -1;
+
+        if (hijoIzq != null) {
+            AltHijoIzq = hijoIzq.obtenerAltura();
+        }
+        if (hijoDer != null) {
+            AltHijoDer = hijoDer.obtenerAltura();
+        }
+        return Math.max(AltHijoIzq,AltHijoDer) + 1;
     }
 
     @Override
     public int obtenerTamanio() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String[] preOrden = preOrden().split(" ");
+        
+        return preOrden.length;
     }
 
     @Override
@@ -136,7 +187,4 @@ public class TElementoAB<T> implements IElementoAB<T> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-   
-
-   	
 }

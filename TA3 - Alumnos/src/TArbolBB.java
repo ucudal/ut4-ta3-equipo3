@@ -49,6 +49,22 @@ public class TArbolBB<T> implements IArbolBB<T> {
             return raiz.inOrden();
         }
     }
+    
+    public String preOrden() {
+        if (raiz != null) {
+            return raiz.preOrden();
+        }
+
+        return null;
+    }
+    
+    public String postOrden() {
+        if (raiz != null) {
+            return raiz.postOrden();
+        }
+
+        return null;
+    }
 
     /**
      * @return recorrida en preOrden del arbol, null en caso de ser vacío
@@ -84,12 +100,18 @@ public class TArbolBB<T> implements IArbolBB<T> {
 
     @Override
     public int obtenerAltura() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (raiz == null) {
+            return -1;
+        }
+        return raiz.obtenerAltura();
     }
 
     @Override
     public int obtenerTamanio() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (raiz == null) {
+            return 0;
+        }
+        return raiz.obtenerTamanio();
     }
 
     @Override

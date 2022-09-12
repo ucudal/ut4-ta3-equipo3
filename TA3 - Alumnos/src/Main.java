@@ -8,8 +8,7 @@ public class Main {
     public static void main(String[] args) {
         TArbolBB arbol = new TArbolBB();
 
-        // cargar las claves del archivo "claves.txt"
-/*
+
       arbol.insertar(new TElementoAB(10, null));
         arbol.insertar(new TElementoAB(1, null));
         arbol.insertar(new TElementoAB(84, null));
@@ -18,7 +17,10 @@ public class Main {
         arbol.insertar(new TElementoAB(23, null));
         arbol.insertar(new TElementoAB(7, null));
         arbol.insertar(new TElementoAB(100, null));
-*/
+        
+        System.out.println(arbol.obtenerAltura());
+        System.out.println(arbol.obtenerTamanio());
+
   
     
     }
